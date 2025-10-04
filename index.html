@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroPoll - Simple Polling App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MicroPoll</h1>
+            <p>Create and share simple polls</p>
+        </header>
+
+        <nav>
+            <button id="create-poll-btn" class="nav-btn active">Create Poll</button>
+            <button id="view-polls-btn" class="nav-btn">My Polls</button>
+        </nav>
+
+        <main>
+            <!-- Poll Creation Section -->
+            <section id="create-section" class="section active">
+                <h2>Create New Poll</h2>
+                <form id="poll-form">
+                    <div class="form-group">
+                        <label for="poll-question">Question:</label>
+                        <input type="text" id="poll-question" placeholder="What's your question?" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Poll Type:</label>
+                        <div class="radio-group">
+                            <input type="radio" id="single-choice" name="poll-type" value="single" checked>
+                            <label for="single-choice">Single Choice</label>
+                            <input type="radio" id="multiple-choice" name="poll-type" value="multiple">
+                            <label for="multiple-choice">Multiple Choice</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="poll-options">Answer Options:</label>
+                        <div id="options-container">
+                            <input type="text" class="option-input" placeholder="Option 1" required>
+                            <input type="text" class="option-input" placeholder="Option 2" required>
+                        </div>
+                        <button type="button" id="add-option">Add Option</button>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Create Poll</button>
+                </form>
+            </section>
+
+            <!-- My Polls Section -->
+            <section id="polls-section" class="section">
+                <h2>My Polls</h2>
+                <div id="polls-list">
+                    <p>No polls created yet. Create your first poll!</p>
+                </div>
+            </section>
+
+            <!-- Voting Section (hidden by default) -->
+            <section id="vote-section" class="section">
+                <h2 id="vote-title"></h2>
+                <div id="vote-options">
+                    <!-- Vote options will be populated here -->
+                </div>
+                <button id="vote-btn" class="btn-primary">Vote</button>
+                <button id="view-results-btn" class="btn-secondary">View Results</button>
+            </section>
+
+            <!-- Results Section (hidden by default) -->
+            <section id="results-section" class="section">
+                <h2 id="results-title"></h2>
+                <div id="results-display">
+                    <!-- Results will be displayed here -->
+                </div>
+                <button id="back-to-polls" class="btn-secondary">Back to My Polls</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
