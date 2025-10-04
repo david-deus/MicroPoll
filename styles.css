@@ -10,6 +10,7 @@ body {
     line-height: 1.6;
     color: #333;
     background-color: #f5f5f5;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -21,17 +22,45 @@ body {
 /* Header */
 header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 header h1 {
     color: #2c3e50;
     margin-bottom: 10px;
+    transition: color 0.3s ease;
 }
 
 header p {
     color: #7f8c8d;
     font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+/* Dark mode toggle button styles */
+.theme-toggle {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+.theme-btn {
+    background: white;
+    border: 2px solid #ecf0f1;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-btn:hover {
+    transform: scale(1.1);
+    border-color: #3498db;
 }
 
 /* Navigation */
@@ -41,6 +70,7 @@ nav {
     background: white;
     border-radius: 8px;
     padding: 5px;
+    transition: background-color 0.3s ease;
 }
 
 .nav-btn {
@@ -74,6 +104,7 @@ nav {
     padding: 30px;
     margin-bottom: 20px;
     display: none;
+    transition: background-color 0.3s ease;
 }
 
 .section.active {
@@ -85,6 +116,7 @@ nav {
     margin-bottom: 20px;
     border-bottom: 2px solid #ecf0f1;
     padding-bottom: 10px;
+    transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Form styles */
@@ -97,6 +129,7 @@ nav {
     margin-bottom: 8px;
     font-weight: 600;
     color: #2c3e50;
+    transition: color 0.3s ease;
 }
 
 input[type="text"],
@@ -110,7 +143,7 @@ input[type="text"] {
     border: 2px solid #ecf0f1;
     border-radius: 6px;
     font-size: 16px;
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 input[type="text"]:focus {
@@ -130,6 +163,7 @@ input[type="text"]:focus {
     margin-bottom: 0;
     font-weight: normal;
     cursor: pointer;
+    transition: color 0.3s ease;
 }
 
 /* Options container */
@@ -196,11 +230,15 @@ input[type="text"]:focus {
     gap: 15px;
 }
 
+#polls-list p {
+    transition: color 0.3s ease;
+}
+
 .poll-item {
     padding: 20px;
     border: 2px solid #ecf0f1;
     border-radius: 8px;
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .poll-item:hover {
@@ -210,12 +248,14 @@ input[type="text"]:focus {
 .poll-item h3 {
     color: #2c3e50;
     margin-bottom: 10px;
+    transition: color 0.3s ease;
 }
 
 .poll-meta {
     color: #7f8c8d;
     font-size: 14px;
     margin-bottom: 15px;
+    transition: color 0.3s ease;
 }
 
 .poll-actions {
@@ -261,11 +301,13 @@ input[type="text"]:focus {
     padding: 10px;
     background: #f8f9fa;
     border-radius: 6px;
+    transition: background-color 0.3s ease;
 }
 
 .result-label {
     flex: 1;
     font-weight: 600;
+    transition: color 0.3s ease;
 }
 
 .result-bar {
@@ -275,6 +317,7 @@ input[type="text"]:focus {
     border-radius: 10px;
     margin: 0 15px;
     overflow: hidden;
+    transition: background-color 0.3s ease;
 }
 
 .result-fill {
@@ -286,12 +329,165 @@ input[type="text"]:focus {
 .result-count {
     font-weight: 600;
     color: #2c3e50;
+    transition: color 0.3s ease;
+}
+
+/* ============================================
+   DARK MODE STYLES
+   ============================================ */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+/* Header in dark mode */
+body.dark-mode header h1 {
+    color: #ffffff;
+}
+
+body.dark-mode header p {
+    color: #b0b0b0;
+}
+
+/* Theme toggle button in dark mode */
+body.dark-mode .theme-btn {
+    background: #2d2d2d;
+    border-color: #404040;
+}
+
+body.dark-mode .theme-btn:hover {
+    border-color: #3498db;
+}
+
+/* Navigation in dark mode */
+body.dark-mode nav {
+    background: #2d2d2d;
+}
+
+body.dark-mode .nav-btn {
+    color: #e0e0e0;
+}
+
+body.dark-mode .nav-btn:hover {
+    background: #3d3d3d;
+}
+
+body.dark-mode .nav-btn.active {
+    background: #3498db;
+    color: white;
+}
+
+body.dark-mode .nav-btn.active:hover {
+    background: #2980b9;
+}
+
+/* Sections in dark mode */
+body.dark-mode .section {
+    background: #2d2d2d;
+}
+
+body.dark-mode .section h2 {
+    color: #ffffff;
+    border-color: #404040;
+}
+
+body.dark-mode .form-group label {
+    color: #e0e0e0;
+}
+
+body.dark-mode .radio-group label {
+    color: #e0e0e0;
+}
+
+/* Input fields in dark mode */
+body.dark-mode input[type="text"] {
+    background: #3d3d3d;
+    border-color: #505050;
+    color: #e0e0e0;
+}
+
+body.dark-mode input[type="text"]:focus {
+    border-color: #3498db;
+}
+
+/* Polls list in dark mode */
+body.dark-mode #polls-list p {
+    color: #b0b0b0;
+}
+
+body.dark-mode .poll-item {
+    background: #2d2d2d;
+    border-color: #404040;
+}
+
+body.dark-mode .poll-item:hover {
+    border-color: #3498db;
+    background: #353535;
+}
+
+body.dark-mode .poll-item h3 {
+    color: #ffffff;
+}
+
+body.dark-mode .poll-meta {
+    color: #b0b0b0;
+}
+
+/* Voting options in dark mode */
+body.dark-mode .vote-option {
+    background: #2d2d2d;
+    border-color: #505050;
+    color: #e0e0e0;
+}
+
+body.dark-mode .vote-option:hover {
+    background: #3d3d3d;
+    border-color: #3498db;
+}
+
+/* Results in dark mode */
+body.dark-mode .result-item {
+    background: #3d3d3d;
+}
+
+body.dark-mode .result-label {
+    color: #e0e0e0;
+}
+
+body.dark-mode .result-bar {
+    background: #505050;
+}
+
+body.dark-mode .result-count {
+    color: #e0e0e0;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
     .container {
         padding: 10px;
+    }
+
+    header {
+        margin-bottom: 15px;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    /* Keep theme toggle on same line as header in mobile */
+    .theme-toggle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        margin-bottom: 0;
+    }
+
+    .theme-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
     }
 
     .section {
