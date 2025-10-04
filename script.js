@@ -201,27 +201,59 @@ class MicroPoll {
     }
 
     showResults() {
-        if (!this.currentPoll) return;
+    if (!this.currentPoll) return;
 
-        document.getElementById('results-title').textContent = this.currentPoll.question;
+    document.getElementById('results-title').textContent = this.currentPoll.question;
 
-        const totalVotes = this.currentPoll.totalVotes;
-        const resultsHtml = this.currentPoll.options.map((option, index) => {
-            const percentage = totalVotes > 0 ? (option.votes / totalVotes * 100).toFixed(1) : 0;
-            return `
-                <div class="result-item">
-                    <div class="result-label">${this.escapeHtml(option.text)}</div>
-                    <div class="result-bar">
-                        <div class="result-fill" style="width: ${percentage}%"></div>
-                    </div>
-                    <div class="result-count">${option.votes} votes (${percentage}%)</div>
-                </div>
-            `;
-        }).join('');
+    // Destroy previous chart if exists
+    if (this.resultsChart) this.resultsChart.destroy();
 
-        document.getElementById('results-display').innerHTML = resultsHtml;
-        this.showSection('results-section');
-    }
+    const ctx = document.getElementById('results-chart').getContext('2d');
+
+    this.resultsChart = new Chart(ctx, {
+        type: 'bar', // Change to 'pie' if you want a pie chart
+        data: {
+            labels: this.currentPoll.options.map(opt => opt.text),
+            datasets: [{
+                label: '# of Votes',
+                data: this.currentPoll.options.map(opt => opt.votes),
+                backgroundColor: [
+                    'rgba(52, 152, 219, 0.6)',
+                    'rgba(46, 204, 113, 0.6)',
+                    'rgba(231, 76, 60, 0.6)',
+                    'rgba(241, 196, 15, 0.6)',
+                    'rgba(155, 89, 182, 0.6)',
+                    'rgba(26, 188, 156, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(52, 152, 219, 1)',
+                    'rgba(46, 204, 113, 1)',
+                    'rgba(231, 76, 60, 1)',
+                    'rgba(241, 196, 15, 1)',
+                    'rgba(155, 89, 182, 1)',
+                    'rgba(26, 188, 156, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false },
+                title: { display: true, text: this.currentPoll.question, font: { size: 18 } }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { stepSize: 1 }
+                }
+            }
+        }
+    });
+
+    this.showSection('results-section');
+}
+
 
     deletePoll(pollId) {
         if (!confirm('Are you sure you want to delete this poll?')) return;
