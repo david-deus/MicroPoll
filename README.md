@@ -1,4 +1,4 @@
-# MicroPoll — Simple Survey & Polling App
+# MicroPoll - Simple Survey & Polling App
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](#license)  
 ![Build Status](https://img.shields.io/github/actions/workflow/status/your-org/micropoll/ci.yml)  
