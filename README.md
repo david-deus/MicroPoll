@@ -19,3 +19,27 @@ By end of Hacktoberfest, the MVP should include:
 - Persist data (e.g. using a database or simple JSON / file storage)  
 
 After MVP, possible enhancements: scheduling polls, anonymous mode, expiration date, export responses, better analytics, embedding polls, theming, etc.
+
+## 🚀 How to Contribute
+
+ - We welcome contributors of all levels. Suggested ways to help:
+ - Add new features (e.g. poll expiration, anonymous voting)
+ - Improve UI/UX, accessibility, themes
+ - Add tests / test coverage
+ - Improve error handling, edge case handling
+ - Write documentation, e.g. API docs, usage examples
+ - Fix bugs / issues
+
+Please read CONTRIBUTING.md for full guidelines.
+
+## Labels & Hacktoberfest
+
+ - We’ll mark specific issues with good-first-issue and help-wanted
+ - Only PRs that meaningfully add value (feature, bug fix, docs, tests) will be accepted
+ - Trivial or spammy PRs may be labeled spam or invalid and will not be counted toward Hacktoberfest contributions (per hacktoberfest rules)
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## Let’s build something awesome together! 💡
