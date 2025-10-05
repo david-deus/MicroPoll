@@ -19,6 +19,14 @@ class MicroPoll {
             this.displayPolls();
         });
 
+        // Dark mode toggle
+        document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+            this.toggleDarkMode();
+        });
+
+        // Load saved theme preference
+        this.loadTheme();
+
         // Poll creation
         document.getElementById('add-option').addEventListener('click', () => {
             this.addOptionInput();
@@ -281,6 +289,24 @@ class MicroPoll {
     // Method to generate shareable link (for future enhancement)
     generateShareableLink(pollId) {
         return `${window.location.origin}${window.location.pathname}?poll=${pollId}`;
+    }
+
+    toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDark);
+    
+    // Update icon
+    const icon = document.querySelector('.theme-icon');
+    icon.textContent = isDark ? '☀️' : '🌙';
+    }
+
+    loadTheme() {
+        const isDark = localStorage.getItem('darkMode') === 'true';
+        if (isDark) {
+            document.body.classList.add('dark-mode');
+            document.querySelector('.theme-icon').textContent = '☀️';
+        }
     }
 }
 
