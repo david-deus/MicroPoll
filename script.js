@@ -51,6 +51,11 @@ class MicroPoll {
             this.displayPolls();
         });
 
+        // Export Results
+document.getElementById('export-results-btn').addEventListener('click', () => {
+    this.exportResults();
+});
+
         // Dynamic option removal
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('remove-option')) {
@@ -260,6 +265,32 @@ class MicroPoll {
     });
 
     this.showSection('results-section');
+}
+
+exportResults() {
+    if (!this.currentPoll) return;
+
+    const exportData = {
+        question: this.currentPoll.question,
+        type: this.currentPoll.type,
+        totalVotes: this.currentPoll.totalVotes,
+        createdAt: this.currentPoll.createdAt,
+        results: this.currentPoll.options.map(opt => ({
+            option: opt.text,
+            votes: opt.votes,
+            percentage: this.currentPoll.totalVotes > 0 
+                ? ((opt.votes / this.currentPoll.totalVotes) * 100).toFixed(2) + '%'
+                : '0%'
+        }))
+    };
+
+    const dataStr = JSON.stringify(exportData, null, 2);
+    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+    
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(dataBlob);
+    link.download = `poll-results-${Date.now()}.json`;
+    link.click();
 }
 
 
